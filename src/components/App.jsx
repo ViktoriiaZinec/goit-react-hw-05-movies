@@ -1,18 +1,16 @@
-import { getTrending } from '../../src/service/video-servise';
+import { MovieDetails } from './MovieDetails/MovieDetails';
+import { Trending } from './Trending/Trending';
+import { Route, Routes } from 'react-router-dom';
 
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101',
-      }}
-    >
-      React homework template
-    </div>
+    <Routes>
+      <Route path="/" element={<Trending />} />
+      <Route path="/movie/:movie_id" element={<MovieDetails />} />
+    </Routes>
+
+    // <>
+    //   <Trending />
+    // </>
   );
 };
