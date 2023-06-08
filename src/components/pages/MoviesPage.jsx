@@ -1,14 +1,20 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { getMovieDetails } from 'service/video-servise';
+import { getMovieDetails, getMovies } from 'service/video-servise';
 import { Link, useLocation } from 'react-router-dom';
 
-export const Trending = () => {
+const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
   const location = useLocation();
+  // useEffect(() => {
+  //   getMovies().then(data => {
+  //     console.log('my', data.data.result);
+  //     setMovies(data.data.results);
+  //   });
+  // }, []);
+
   useEffect(() => {
-    getMovieDetails().then(data => {
-      //   console.log(data);
+    getMovies().then(data => {
       setMovies(data.data.results);
     });
   }, []);
@@ -25,3 +31,5 @@ export const Trending = () => {
     </ul>
   );
 };
+
+export default MoviesPage;

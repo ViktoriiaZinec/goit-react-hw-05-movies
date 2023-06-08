@@ -16,10 +16,10 @@ export const getMovies = async (page = 1) => {
 // getMovies();
 
 export const getMovieDetails = async movie_id => {
-  console.log(
-    axios.defaults.baseURL +
-      `/movie/${movie_id}?api_key=${API_KEY}&language=en-US`
-  );
+  // console.log(
+  //   axios.defaults.baseURL +
+  //     `/movie/${movie_id}?api_key=${API_KEY}&language=en-US`
+  // );
   const promise = axios.get(
     `/movie/${movie_id}?api_key=${API_KEY}&language=en-US`
   );
