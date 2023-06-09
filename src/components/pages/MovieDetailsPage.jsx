@@ -8,7 +8,7 @@ const MovieDetailsPage = () => {
   const { movie_id } = useParams();
   const location = useLocation();
   const defaultImg =
-    'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.shutterstock.com%2Fru%2Fimage-vector%2Fimage-not-found-grayscale-photo-1737334631&psig=AOvVaw1-GJGIxYTff8RxRUivH4YC&ust=1686308950647000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCKCp-8HEs_8CFQAAAAAdAAAAABAE';
+    'https://flutter-examples.com/wp-content/uploads/2022/03/image_not_found.png';
 
   useEffect(() => {
     if (!movie_id) return;
@@ -30,7 +30,7 @@ const MovieDetailsPage = () => {
               ? 'https://image.tmdb.org/t/p/w500' + movie.poster_path
               : defaultImg
           }
-          alt=""
+          alt={movie.name}
           width="200"
           height="300"
         ></img>

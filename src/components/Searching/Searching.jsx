@@ -1,7 +1,7 @@
 import { useState } from 'react';
 // import { getSearchingMovies } from 'service/video-servise';
 import { useSearchParams } from 'react-router-dom';
-
+import css from './Searching.module.css';
 export const Searching = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query');
@@ -9,7 +9,6 @@ export const Searching = () => {
   const [search, setSearch] = useState(query ?? '');
 
   const handleChange = event => {
-    // console.log('event.target :>> ', event.target);
     const { value } = event.target;
     setSearch(value);
   };
@@ -20,15 +19,19 @@ export const Searching = () => {
   };
 
   return (
-    <div>
+    <div className={css.form_control}>
       <input
         value={search}
         onChange={handleChange}
         type="text"
-        className="form-control"
+        className={css.search_form_input}
         placeholder="Type to search..."
       />
-      <button type="submit" onClick={handleSubmit}>
+      <button
+        className={css.search_form_button}
+        type="submit"
+        onClick={handleSubmit}
+      >
         Search
       </button>
     </div>

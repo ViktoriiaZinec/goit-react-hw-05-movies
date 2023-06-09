@@ -1,15 +1,30 @@
 import { NavLink, Outlet } from 'react-router-dom';
+import css from './Layout.module.css';
 export const Layout = () => {
   return (
     <>
       <header>
         <nav>
-          <ul style={{ display: 'flex' }}>
-            <li>
-              <NavLink to="/">Home</NavLink>
+          <ul className={css.list}>
+            <li className={css.list_item}>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? css.active : undefined
+                }
+                to="/"
+              >
+                Home
+              </NavLink>
             </li>
-            <li>
-              <NavLink to="/movies">Movies</NavLink>
+            <li className={css.list_item}>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? css.active : undefined
+                }
+                to="/movies"
+              >
+                Movies
+              </NavLink>
             </li>
           </ul>
         </nav>

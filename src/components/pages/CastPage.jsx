@@ -1,20 +1,44 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { getCast } from 'service/video-servise';
-const CastPage = actors => {
-  return <h1>Cast</h1>;
-  // const [actors, setActors] = useState({});
+import css from '../css/Styles.module.css';
 
-  // const defaultImg =
-  //   'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.shutterstock.com%2Fru%2Fimage-vector%2Fimage-not-found-grayscale-photo-1737334631&psig=AOvVaw1-GJGIxYTff8RxRUivH4YC&ust=1686308950647000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCKCp-8HEs_8CFQAAAAAdAAAAABAE';
+const CastPage = () => {
+  const [actors, setActors] = useState([]);
+  const { movie_id: id } = useParams();
 
-  // return (
-  //   <ul>
-  //     {actors.map(actor => (
-  //       <li key={actor.id}>
-  //         <img src={actor.profile_path} alt={actor.name}></img>
-  //       </li>
-  //     ))}
-  //   </ul>
-  // );
+  useEffect(() => {
+    // console.log('id :>> ', id);
+    if (!id) return;
+    const getActors = async () => {
+      const data = await getCast(id);
+      setActors(data.data.cast);
+      console.log('data :>> ', data.data);
+    };
+
+    getActors();
+  }, [id]);
+
+  if (!actors.length) return null;
+  return (
+    <ul className={css.cast_list}>
+      {actors.map(actor => (
+        <li className={css.cast_item} key={actor.id}>
+          <img
+            src={
+              actor.profile_path
+                ? 'https://image.tmdb.org/t/p/w500' + actor.profile_path
+                : 'https://flutter-examples.com/wp-content/uploads/2022/03/image_not_found.png'
+            }
+            alt={actor.name}
+            width="120"
+            height="180"
+          ></img>
+
+          <p>{actor.name}</p>
+        </li>
+      ))}
+    </ul>
+  );
 };
 export default CastPage;

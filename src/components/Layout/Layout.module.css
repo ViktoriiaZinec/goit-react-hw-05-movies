@@ -1,0 +1,23 @@
+.list {
+  display: flex;
+  gap: 14px;
+  list-style: none;
+  font-size: 20px;
+}
+a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  padding: 10px;
+}
+.active {
+  display: block;
+  /* width: 150px;
+  height: 30px; */
+  padding: 10px;
+  border-radius: 5px;
+  background-color: rgb(0, 0, 159);
+  opacity: 0.8;
+  color: white;
+  /* border: 1px solid rgb(0, 0, 159); */
+}
