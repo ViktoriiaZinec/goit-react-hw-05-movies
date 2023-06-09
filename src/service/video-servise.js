@@ -13,16 +13,25 @@ export const getMovies = async (page = 1) => {
 
   return promise;
 };
-// getMovies();
 
 export const getMovieDetails = async movie_id => {
-  // console.log(
-  //   axios.defaults.baseURL +
-  //     `/movie/${movie_id}?api_key=${API_KEY}&language=en-US`
-  // );
   const promise = axios.get(
     `/movie/${movie_id}?api_key=${API_KEY}&language=en-US`
   );
-  console.log(promise);
+  return promise;
+};
+export const getSearchingMovies = async query => {
+  const promise = axios.get(
+    `/search/movie?query=${query}&include_adult=false&language=en-US&page=1&api_key=${API_KEY}`
+    // `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1&api_key=4a1172526f3e165e04bf3ca6cde313b8`
+  );
+
+  return promise;
+};
+
+export const getCast = async movie_id => {
+  const promise = await axios.get(
+    `https://api.themoviedb.org/3/movie/${movie_id}/credits?language=en-US&api_key=4a1172526f3e165e04bf3ca6cde313b8`
+  );
   return promise;
 };

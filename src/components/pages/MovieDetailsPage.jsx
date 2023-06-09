@@ -1,12 +1,6 @@
-// import { MovieDetails } from 'components/MovieDetails/MovieDetails';
-
-// export default function MoviesDetailsPage() {
-//   return MovieDetails();
-// }
-
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { getMovieDetails } from 'service/video-servise';
 
 const MovieDetailsPage = () => {
@@ -40,26 +34,25 @@ const MovieDetailsPage = () => {
           width="200"
           height="300"
         ></img>
-        ;<h1>{}</h1>
         <h2>Overview</h2>
         <p>User Score: {movie.vote_average} %</p>
         <p>{movie.overview}</p>
         <h2>Genres</h2>
         <p>
           {movie.genres.map(el => {
-            console.log(el);
             return el.name;
           })}
         </p>
         <p>Additional Information:</p>
         <ul>
           <li>
-            <Link to={/movie/}>Cast</Link>
+            <Link to={'cast'}>Cast</Link>
           </li>
           <li>
-            <Link to={/movie/}>Reviews</Link>
+            <Link to={`reviews`}>Reviews</Link>
           </li>
         </ul>
+        <Outlet />
       </div>
     </>
   );
