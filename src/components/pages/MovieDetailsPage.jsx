@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { getMovieDetails } from 'service/video-servise';
+import css from '../css/Styles.module.css';
 
 const MovieDetailsPage = () => {
   const [movie, setMovie] = useState({});
@@ -22,34 +23,45 @@ const MovieDetailsPage = () => {
   if (!('id' in movie)) return null;
   return (
     <>
-      <Link to={location.state?.from ?? '/'}>Go back</Link>
-      <div>
-        <img
-          src={
-            movie.poster_path
-              ? 'https://image.tmdb.org/t/p/w500' + movie.poster_path
-              : defaultImg
-          }
-          alt={movie.name}
-          width="200"
-          height="300"
-        ></img>
-        <h2>Overview</h2>
-        <p>User Score: {movie.vote_average} %</p>
-        <p>{movie.overview}</p>
-        <h2>Genres</h2>
-        <p>
-          {movie.genres.map(el => {
-            return el.name;
-          })}
-        </p>
+      <Link className={css.link_back} to={location.state?.from ?? '/'}>
+        Go back
+      </Link>
+      <div className={css.container_movie}>
+        <div className={css.img_descr}>
+          <img
+            src={
+              movie.poster_path
+                ? 'https://image.tmdb.org/t/p/w500' + movie.poster_path
+                : defaultImg
+            }
+            alt={movie.title}
+            width="200"
+            height="300"
+          ></img>
+          <div className={css.movie_descr}>
+            <h1>{movie.title}</h1>
+            <p>User Score: {movie.vote_average} %</p>
+            <h2>Overview</h2>
+            <p>{movie.overview}</p>
+            <h2>Genres</h2>
+            <p>
+              {movie.genres.map(el => {
+                return el.name;
+              })}
+            </p>
+          </div>
+        </div>
         <p>Additional Information:</p>
-        <ul>
+        <ul className={css.cast_rew_list}>
           <li>
-            <Link to={'cast'}>Cast</Link>
+            <Link className={css.cast_rew_link} to={'cast'}>
+              Cast
+            </Link>
           </li>
           <li>
-            <Link to={`reviews`}>Reviews</Link>
+            <Link className={css.cast_rew_link} to={`reviews`}>
+              Reviews
+            </Link>
           </li>
         </ul>
         <Outlet />

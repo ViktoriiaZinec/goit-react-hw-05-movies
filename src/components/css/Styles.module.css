@@ -1,9 +1,36 @@
+.container_movie {
+  margin: 10px 60px;
+}
 .cast_list {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  list-style: none;
+  gap: 24px;
 }
 .cast_item {
   width: 120px;
+}
+.img_descr {
+  display: flex;
+  gap: 30px;
+}
+.link_back {
+  margin-left: 50px;
+  font-size: 20px;
+}
+.cast_rew_list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding: 0;
+  margin-left: 0;
+  font-size: 20px;
+}
+.cast_rew_link:hover,
+.cast_rew_link:focus {
+  color: rgb(0, 0, 159);
+}
+.error {
+  color: red;
+  font-size: 20px;
+  margin-left: 50px;
 }

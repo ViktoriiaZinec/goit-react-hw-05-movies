@@ -1,8 +1,18 @@
+header {
+  width: 100%;
+  border-bottom: 2px solid grey;
+  -webkit-box-shadow: 0px 4px 3px 0px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 4px 3px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 4px 3px 0px rgba(0, 0, 0, 0.5);
+  padding-left: 50px;
+  margin-bottom: 30px;
+}
 .list {
   display: flex;
   gap: 14px;
   list-style: none;
   font-size: 20px;
+  margin-left: -40px;
 }
 a {
   display: block;
@@ -12,12 +22,7 @@ a {
 }
 .active {
   display: block;
-  /* width: 150px;
-  height: 30px; */
   padding: 10px;
   border-radius: 5px;
-  background-color: rgb(0, 0, 159);
-  opacity: 0.8;
-  color: white;
-  /* border: 1px solid rgb(0, 0, 159); */
+  color: rgb(0, 0, 159);
 }

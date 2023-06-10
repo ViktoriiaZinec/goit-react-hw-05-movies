@@ -1,13 +1,3 @@
-/* .form_control {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 30px;
-  max-width: 600px;
-  background-color: blue;
-  border-radius: 3px;
-  overflow: hidden;
-} */
 .search_form_button {
   display: inline-block;
   width: 100px;
@@ -37,6 +27,7 @@
   outline: none;
   padding-left: 4px;
   padding-right: 4px;
+  margin-left: 50px;
 }
 
 .search_form_input::placeholder {

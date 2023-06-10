@@ -8,12 +8,10 @@ const CastPage = () => {
   const { movie_id: id } = useParams();
 
   useEffect(() => {
-    // console.log('id :>> ', id);
     if (!id) return;
     const getActors = async () => {
       const data = await getCast(id);
       setActors(data.data.cast);
-      console.log('data :>> ', data.data);
     };
 
     getActors();
