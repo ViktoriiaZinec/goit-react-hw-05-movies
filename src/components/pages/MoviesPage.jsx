@@ -16,32 +16,41 @@ const MoviesPage = () => {
   const [status, setStatus] = useState(fetchStatus.Idle);
   const location = useLocation();
 
-  const [searchParams] = useSearchParams();
-  const search = searchParams.get('query');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get('query');
 
   const fetchMovies = useCallback(async () => {
-    if (!search) return;
+    if (!query) return;
     setStatus(fetchStatus.Loading);
     try {
-      const movies = await getSearchingMovies(search);
+      const movies = await getSearchingMovies(query);
       setMovies(movies.data.results);
       setStatus(fetchStatus.Success);
     } catch (err) {
       setStatus(fetchStatus.Error);
     }
-  }, [search]);
+  }, [query]);
 
   useEffect(() => {
     fetchMovies();
   }, [fetchMovies]);
 
+  const handleSearch = search => {
+    if (!search.trim()) {
+      return alert('Please type text');
+    }
+    setSearchParams({ query: search });
+  };
+
   return (
-    <div>
-      <Searching />
+    <>
+      <Searching query={query} onSearch={handleSearch} />
       {status === fetchStatus.Loading && 'Loading, wait'}
       {status === fetchStatus.Error && 'Error fetching'}
-      {status === fetchStatus.Success && MovieList(movies, location)}
-    </div>
+      {status === fetchStatus.Success && (
+        <MovieList movies={movies} location={location} />
+      )}
+    </>
   );
 };
 

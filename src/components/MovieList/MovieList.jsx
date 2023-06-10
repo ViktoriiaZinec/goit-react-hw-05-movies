@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import css from '../css/Styles.module.css';
 
-export const MovieList = (movies, location) => {
+export const MovieList = ({ movies, location }) => {
   if (movies.length > 0) {
     return (
       <ul>

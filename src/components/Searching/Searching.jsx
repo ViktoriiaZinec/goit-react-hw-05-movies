@@ -1,27 +1,19 @@
 import { useState } from 'react';
-// import { getSearchingMovies } from 'service/video-servise';
-import { useSearchParams } from 'react-router-dom';
 import css from './Searching.module.css';
 
-export const Searching = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const query = searchParams.get('query');
-
+export const Searching = ({ query, onSearch }) => {
   const [search, setSearch] = useState(query ?? '');
 
   const handleChange = event => {
     const { value } = event.target;
     setSearch(value);
+    console.log('value :>> ', value);
   };
 
   const handleSubmit = () => {
-    if (!search.trim()) {
-      return alert('Please type text');
-    }
-    setSearchParams({ query: search });
+    onSearch(search);
     setSearch('');
   };
-
   return (
     <div className={css.form_control}>
       <input

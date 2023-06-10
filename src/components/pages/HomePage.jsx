@@ -13,7 +13,7 @@ const MoviesPage = () => {
       setMovies(data.data.results);
     });
   }, []);
-  return MovieList(movies, location);
+  return <MovieList movies={movies} location={location} />;
 };
 
 export default MoviesPage;
