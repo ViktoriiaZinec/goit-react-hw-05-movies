@@ -4,10 +4,10 @@ import css from './Searching.module.css';
 export const Searching = ({ query, onSearch }) => {
   const [search, setSearch] = useState(query ?? '');
 
-  const handleChange = event => {
-    const { value } = event.target;
+  const handleChange = ({ target }) => {
+    const { value } = target;
     setSearch(value);
-    console.log('value :>> ', value);
+    // console.log('value :>> ', value);
   };
 
   const handleSubmit = () => {

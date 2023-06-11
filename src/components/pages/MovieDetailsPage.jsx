@@ -8,6 +8,7 @@ const MovieDetailsPage = () => {
   const [movie, setMovie] = useState({});
   const { movie_id } = useParams();
   const location = useLocation();
+  console.log('location.details :>> ', location);
   const defaultImg =
     'https://flutter-examples.com/wp-content/uploads/2022/03/image_not_found.png';
 
@@ -21,6 +22,7 @@ const MovieDetailsPage = () => {
   }, [movie_id]);
 
   if (!('id' in movie)) return null;
+
   return (
     <>
       <Link className={css.link_back} to={location.state?.from ?? '/'}>
@@ -54,12 +56,20 @@ const MovieDetailsPage = () => {
         <p>Additional Information:</p>
         <ul className={css.cast_rew_list}>
           <li>
-            <Link className={css.cast_rew_link} to={'cast'}>
+            <Link
+              state={location.state}
+              className={css.cast_rew_link}
+              to={'cast'}
+            >
               Cast
             </Link>
           </li>
           <li>
-            <Link className={css.cast_rew_link} to={`reviews`}>
+            <Link
+              state={location.state}
+              className={css.cast_rew_link}
+              to={`reviews`}
+            >
               Reviews
             </Link>
           </li>
