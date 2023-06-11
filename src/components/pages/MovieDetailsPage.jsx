@@ -8,7 +8,6 @@ const MovieDetailsPage = () => {
   const [movie, setMovie] = useState({});
   const { movie_id } = useParams();
   const location = useLocation();
-  console.log('location.details :>> ', location);
   const defaultImg =
     'https://flutter-examples.com/wp-content/uploads/2022/03/image_not_found.png';
 

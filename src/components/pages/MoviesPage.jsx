@@ -15,7 +15,6 @@ const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
   const [status, setStatus] = useState(fetchStatus.Idle);
   const location = useLocation();
-  console.log('location :>> ', location);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query');
