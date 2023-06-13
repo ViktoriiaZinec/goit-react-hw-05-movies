@@ -3,11 +3,15 @@ import { useEffect } from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { getMovieDetails } from 'service/video-servise';
 import css from '../css/Styles.module.css';
+// import { useRef } from 'react';
 
-const MovieDetailsPage = () => {
+const MovieDetailsPage = ({ newStateRef }) => {
   const [movie, setMovie] = useState({});
   const { movie_id } = useParams();
   const location = useLocation();
+  // const stateRef = useRef(location.state);
+  // console.log('stateRef :>> ', stateRef);
+
   const defaultImg =
     'https://flutter-examples.com/wp-content/uploads/2022/03/image_not_found.png';
 
@@ -24,7 +28,12 @@ const MovieDetailsPage = () => {
 
   return (
     <>
-      <Link className={css.link_back} to={location.state?.from ?? '/'}>
+      <Link
+        className={css.link_back}
+        // ref={newStateRef}
+        to={location.state?.from ?? '/'}
+      >
+        {/* <Link className={css.link_back} to={stateRef}> */}
         Go back
       </Link>
       <div className={css.container_movie}>
@@ -65,6 +74,7 @@ const MovieDetailsPage = () => {
           </li>
           <li>
             <Link
+              // ref={stateRef}
               state={location.state}
               className={css.cast_rew_link}
               to={`reviews`}

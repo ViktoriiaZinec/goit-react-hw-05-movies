@@ -11,11 +11,15 @@ const fetchStatus = {
   Error: 'error',
 };
 
-const MoviesPage = () => {
+const MoviesPage = ({ onChangeState }) => {
   const [movies, setMovies] = useState([]);
   const [status, setStatus] = useState(fetchStatus.Idle);
   const location = useLocation();
+  // const stateRef = useRef(location);
+  // console.log('stateRef :>> ', stateRef);
+  // onChangeState(stateRef);
 
+  // console.log('object :>> ', stateRef);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query');
 
